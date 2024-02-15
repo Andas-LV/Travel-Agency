@@ -1,21 +1,16 @@
-package main
+package handler
 
 import (
-	"github.com/gin-gonic/gin"
+	"encoding/json"
 	"net/http"
 )
 
-func main() {
-	// Initialize Gin
-	r := gin.Default()
-
-	// Define your routes
-	r.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "Hello API Epta1",
-		})
-	})
-	//
-	// Run the server
-	r.Run(":8080")
+// Hello handles requests to the "/hello" endpoint
+func Hello(w http.ResponseWriter, r *http.Request) {
+	response := map[string]string{"message": "Hello, API"}
+	w.Header().Set("Content-Type", "application/json")
+	err := json.NewEncoder(w).Encode(response)
+	if err != nil {
+		return
+	}
 }
