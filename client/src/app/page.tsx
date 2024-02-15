@@ -4,7 +4,7 @@ import {useEffect} from "react";
 
 export default function Home() {
     useEffect(() => {
-        fetch('http://localhost:8080/api/hello', {
+        fetch('https://tech-agency-iota.vercel.app/api/hello', {
             method: 'GET'
         })
             .then(response => response.json())
