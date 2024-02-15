@@ -4,17 +4,32 @@ import {useEffect} from "react";
 
 export default function Home() {
     useEffect(() => {
-        // Здесь используем локальный адрес сервера и конкретный эндпоинт API
-        fetch('http://localhost:8080/api/hello')
+        fetch('http://localhost:8080/api/hello', {
+            method: 'GET'
+        })
             .then(response => response.json())
             .then(data => {
-                console.log(data.message); // Вывод сообщения в консоль
+                console.log(data.message);
             })
             .catch(error => {
-                console.error('There was an error!', error);
+                console.error('There was an error 1 !', error);
             });
     }, []);
-  return (
+
+    useEffect(() => {
+        fetch('/api/hello', {
+            method: 'GET'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+            })
+            .catch(error => {
+                console.error('There was an error 2 !', error);
+            });
+    }, []);
+
+    return (
     <main className={styles.main}>
       hop
     </main>
