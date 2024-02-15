@@ -1,7 +1,20 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import React, { useEffect } from 'react';
 
 export default function Home() {
+
+  useEffect(() => {
+    // Здесь используем локальный адрес сервера и конкретный эндпоинт API
+    fetch('/api/hello')
+        .then(response => response.json())
+        .then(data => {
+          console.log(data.message); // Вывод сообщения в консоль
+        })
+        .catch(error => {
+          console.error('There was an error!', error);
+        });
+  }, []);
   return (
     <main className={styles.main}>
       <div className={styles.description}>
