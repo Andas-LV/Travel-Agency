@@ -31,7 +31,7 @@ export default function Home() {
 
     return (
     <main className={styles.main}>
-      hop
+      hopping
     </main>
   );
 }
