@@ -12,7 +12,7 @@ func main() {
 	// Define your routes
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"message": "Andas sosi moi huy",
+			"message": "Hello API Epta",
 		})
 	})
 	//
