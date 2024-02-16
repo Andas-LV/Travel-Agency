@@ -17,7 +17,7 @@ func NewUserController() *UserController {
 }
 
 func GetHello(w http.ResponseWriter, r *http.Request) {
-	response := map[string]string{"message": "Hello, API"}
+	response := map[string]string{"message": "Hello, API3"}
 	w.Header().Set("Content-Type", "application/json")
 	err := json.NewEncoder(w).Encode(response)
 	if err != nil {
