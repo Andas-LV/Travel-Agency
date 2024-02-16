@@ -1,16 +1,14 @@
 package handler
 
 import (
-	"encoding/json"
+	"fmt"
+	"log"
+	"my-gin-project/routes"
 	"net/http"
 )
 
-// Hello handles requests to the "/hello" endpoint
-func Hello(w http.ResponseWriter, r *http.Request) {
-	response := map[string]string{"message": "Hello, API"}
-	w.Header().Set("Content-Type", "application/json")
-	err := json.NewEncoder(w).Encode(response)
-	if err != nil {
-		return
-	}
+func main() {
+	router := routes.SetupRoutes()
+	fmt.Println("Starting server for Moriarty")
+	log.Fatal(http.ListenAndServe("127.0.0.1:8080", router))
 }
