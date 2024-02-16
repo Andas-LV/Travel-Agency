@@ -19,7 +19,7 @@ const MainPage = () => {
     console.log('hello 2');
     return (
         <div>
-            <h1>Welcome to the Main Page!</h1>
+            <h1>Welcome Page!</h1>
         </div>
     );
 };
