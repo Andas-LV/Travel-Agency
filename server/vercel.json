@@ -3,7 +3,7 @@
   "routes": [
     {
       "src": "/api/hello",
-      "dest": "server/main.go"
+      "dest": "/api/hello"
     },
     {
       "src": "/(.*)",
@@ -13,7 +13,8 @@
   "builds": [
     {
       "src": "server/main.go",
-      "use": "@vercel/go"
+      "use": "@vercel/go",
+      "config": {"distDir": "api"}
     },
     {
       "src": "client/package.json",
