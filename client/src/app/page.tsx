@@ -14,7 +14,9 @@ const MainPage = () => {
             .catch(error => {
                 console.error('There was an error!', error);
             });
+        console.log('hello 1');
     }, []);
+    console.log('hello 2');
     return (
         <div>
             <h1>Welcome to the Main Page!</h1>
