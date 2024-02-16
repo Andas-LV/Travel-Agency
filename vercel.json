@@ -3,7 +3,7 @@
   "routes": [
     {
       "src": "/api/hello",
-      "dest": "main.go"
+      "dest": "server/main.go"
     },
     {
       "src": "/(.*)",
