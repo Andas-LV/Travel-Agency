@@ -1,20 +1,8 @@
-"use client"
 import styles from "./page.module.css";
-import { useEffect } from "react";
+import Route from "@/pages/api/route";
 
 export default function Home() {
-    useEffect(() => {
-        fetch('/api/hello', {
-            method: 'GET'
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.message);
-            })
-            .catch(error => {
-                console.error('There was an error!', error);
-            });
-    }, []);
+    { Route() }
 
     return (
     <main className={styles.main}>
