@@ -4,10 +4,12 @@ import styles from './page.module.css';
 
 const MainPage = () => {
     useEffect(() => {
-        fetch('/api/hello')
+        fetch('/api/hello', {
+            method: 'GET'
+        })
             .then(response => response.json())
             .then(data => {
-                console.log(data.message); // Вывод сообщения в консоль
+                console.log(data.message);
             })
             .catch(error => {
                 console.error('There was an error!', error);
