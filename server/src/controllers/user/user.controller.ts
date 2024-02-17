@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CreateUserDto } from 'src/dto/create-user.dto';
 import { User } from '../../models/user';
 import { UserService } from 'src/services/user/user.service';
-@Controller('user')
+@Controller('api/user')
 export class UserController {
   constructor(private userService: UserService) {}
   @Get('connect')
