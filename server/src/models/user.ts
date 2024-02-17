@@ -16,13 +16,11 @@ export class User {
     @IsString()
     password: string;
 
-    // Assuming destinationIds is an array of integers, adjust based on your schema
-    @Column("int", { array: true })
-    destinationIds: number[];
-
-    // Assuming boughtDestinationIds is an array of integers, adjust based on your schema
-    @Column("int", { array: true })
-    boughtDestinationIds: number[];
+    @Column("int", { array: true, nullable: true })
+    destinationIds: number[] | null;
+    
+    @Column("int", { array: true, nullable: true })
+    boughtDestinationIds: number[] | null;
 
     @Column({
         type: "varchar",

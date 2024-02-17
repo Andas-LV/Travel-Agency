@@ -18,6 +18,7 @@ import { UserModule } from './modules/user.module';
           rejectUnauthorized: false, // Note: This is necessary if your server uses self-signed certificates; for production, ensure your certificates are properly signed
         },
       },
+      synchronize:true
     }),
     UserModule
   ],
