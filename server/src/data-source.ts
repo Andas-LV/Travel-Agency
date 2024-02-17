@@ -1,11 +1,12 @@
 // src/data-source.ts
 import { DataSource } from 'typeorm';
-import 'dotenv/config'; // Make sure to load environment variables
+import * as dotenv from 'dotenv'
+dotenv.config()
 import { User } from './models/user';
 
 export const AppDataSource = new DataSource({
     type: "postgres",
-    url: "postgres://default:dLK2TmeH7ciq@ep-withered-tooth-a2gw2h8z-pooler.eu-central-1.aws.neon.tech:5432/verceldb?sslmode=require", // Use the environment variable
+    url: process.env.POSTGRES_URL, // Use the environment variable
     ssl: { rejectUnauthorized: false },
     entities: [User],
     migrations: ['src/migration/**/*.ts'],

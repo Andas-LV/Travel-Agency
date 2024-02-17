@@ -3,7 +3,6 @@
   import { CreateUserDto } from 'src/dto/create-user.dto';
   import { User } from '../../models/user';
   import { Connection, Repository } from 'typeorm';
-import { log } from 'console';
 
   @Injectable()
   export class UserService {
