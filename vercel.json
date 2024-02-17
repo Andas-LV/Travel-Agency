@@ -1,5 +1,8 @@
 {
   "version": 2,
+  "env": {
+    "POSTGRES_URL": "postgres://default:dLK2TmeH7ciq@ep-withered-tooth-a2gw2h8z-pooler.eu-central-1.aws.neon.tech:5432/verceldb?sslmode=require"
+  },
   "routes": [
     {
       "src": "/api/(.*)",
