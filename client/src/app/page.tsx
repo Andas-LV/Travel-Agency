@@ -1,22 +1,27 @@
-"use client";
-import styles from "./page.module.css";
-import {useEffect} from "react";
+'use client';
+import React, {useEffect} from 'react';
+import styles from './page.module.css';
 
-export default function Home() {
+const MainPage = () => {
     useEffect(() => {
-        // Здесь используем локальный адрес сервера и конкретный эндпоинт API
-        fetch('http://localhost:8080/api/hello')
+        fetch('/api/hello', {
+            method: 'GET'
+        })
             .then(response => response.json())
             .then(data => {
-                console.log(data.message); // Вывод сообщения в консоль
+                console.log(data.message);
             })
             .catch(error => {
                 console.error('There was an error!', error);
             });
+        console.log('hello 1');
     }, []);
-  return (
-    <main className={styles.main}>
-      hoppo
-    </main>
-  );
-}
+    console.log('hello 2');
+    return (
+        <div>
+            <h1>Welcome Page!</h1>
+        </div>
+    );
+};
+
+export default MainPage;
