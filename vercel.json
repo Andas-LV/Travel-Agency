@@ -12,7 +12,7 @@
   ],
   "builds": [
     {
-      "src": "server/src/main.ts",
+      "src": "server/package.json",
       "use": "@vercel/node"
     },
     {
