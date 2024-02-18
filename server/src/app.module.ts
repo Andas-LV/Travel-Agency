@@ -14,7 +14,7 @@ dotenv.config()
       entities:[User],
       extra: {
         ssl: {
-          rejectUnauthorized: false, // Note: This is necessary if your server uses self-signed certificates; for production, ensure your certificates are properly signed
+          rejectUnauthorized: false,
         },
       },
       synchronize:true

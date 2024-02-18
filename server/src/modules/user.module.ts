@@ -7,7 +7,7 @@ import { UserService } from 'src/services/user/user.service';
 
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User])], // Register User entity for feature module
+  imports: [TypeOrmModule.forFeature([User])],
   providers: [UserService],
   controllers: [UserController],
 })
