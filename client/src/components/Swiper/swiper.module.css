@@ -1,0 +1,10 @@
+.destination, .cityName{
+    color: white;
+}
+
+.cityName{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 10px 0;
+}

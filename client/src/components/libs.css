@@ -1,0 +1,35 @@
+@media (max-width: 768px) {
+    .rdrDefinedRangesWrapper {
+        display: none;
+    }
+    .rdrCalendarWrapper .rdrDateRangeWrapper{
+        height: 30vh;
+    }
+}
+
+.rdrDateRangePickerWrapper {
+    max-height: 90vh;
+}
+
+/*SWIPER*/
+
+.swiper-pagination{
+    display: none;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    position:absolute;
+
+    color: white !important;
+    background-color: #FF7757;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after {
+    font-size: 20px !important;
+}
+
+.swiper-button-prev:hover, .swiper-button-next:hover {
+    background-color: #172432;
+}
