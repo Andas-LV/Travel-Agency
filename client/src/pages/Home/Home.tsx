@@ -1,9 +1,10 @@
 import Header from "@/components/Header/Header";
-import {DateCheck} from "@/components/DateRangePicker";
+import {DateCheck} from "@/components/DateRangePicker/DateRangePicker";
 import {cities, quantity} from "@/assets/select";
 import dynamic from "next/dynamic";
 const Select = dynamic(() => import("react-select"), { ssr: false });
 import styles from './home.module.css';
+import Image from "next/image";
 
 const Home = () => {
 
@@ -17,17 +18,27 @@ const Home = () => {
             </div>
 
             <article className={styles.article}>
-                <div>
+                <div className={styles.selector}>
                     <label>Destination</label>
-                    <Select options={cities} placeholder={"Choose destination"}/>
+                    <Select options={cities} placeholder={"Dubai"}/>
                 </div>
-                <div>
+                <div className={styles.selector}>
                     <label>Person</label>
-                    <Select options={quantity} placeholder={"Person"}/>
+                    <Select options={quantity} placeholder={"3"}/>
                 </div>
-                <div>
+                <div className={styles.selector}>
                     <label>Check in/out</label>
                     <DateCheck/>
+                </div>
+
+                <div className={styles.booking}>
+                    <h2>Book now</h2>
+                    <Image
+                        src={"/svg/arrow.svg"}
+                        alt={"img"}
+                        width={20}
+                        height={20}
+                    />
                 </div>
             </article>
         </div>

@@ -38,3 +38,46 @@ export const quantity: Quantity[] = [
   { value: 9, label: '9' },
   { value: 10, label: '10' },
 ];
+
+export const destination = [
+    {
+      img: '/cities/orange.png',
+      cityName: 'orange',
+      destination: 'some text',
+    },
+    {
+      img: '/cities/blogImg.jpg',
+      cityName: 'blogImg',
+        destination: 'destination text',
+    },
+    {
+      img: '/cities/bridge2.png',
+      cityName: 'bridge2',
+        destination: 'destination text',
+    },
+    {
+      img: '/cities/lisbon.png',
+      cityName: 'lisbon',
+        destination: 'destination text',
+    },
+    {
+      img: '/cities/Image_container.png',
+      cityName: 'Image_container',
+        destination: 'destination text',
+    },
+    {
+      img: '/cities/Image_container-1.png',
+      cityName: 'Image_container-1',
+        destination: 'destination text',
+    },
+    {
+      img: '/cities/Image_container-2.png',
+      cityName: 'Image_container-2',
+        destination: 'destination',
+    },
+    {
+      img: '/cities/Image_container-3.png',
+      cityName: 'Image_container-3',
+        destination: 'destination',
+    },
+];

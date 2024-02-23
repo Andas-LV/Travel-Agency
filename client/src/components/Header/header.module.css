@@ -30,3 +30,9 @@
 .header button:hover{
     background-color: #FF7757;
 }
+
+@media (max-width: 1152px) {
+    .header{
+        overflow-x: hidden;
+    }
+}
