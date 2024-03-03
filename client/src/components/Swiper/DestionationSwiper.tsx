@@ -27,16 +27,16 @@ export default function Slider() {
             {destination.map((city, index) => (
                 <SwiperSlide key={index}>
                     <div style={{
+                        background: `url(${city.img}) no-repeat center center fixed`,
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'flex-end',
-                        maxWidth: '30vw',
-                        height: '70vh',
-                        background: `url(${city.img}) no-repeat center center fixed`,
                         backgroundSize: 'cover',
                         borderRadius: '20px',
                         padding: '10px',
-                    }}>
+                    }}
+                    className={styles.destImg}
+                    >
                         <p className={styles.destination}>{city.destination}</p>
                         <h2 className={styles.cityName}>
                             <Image

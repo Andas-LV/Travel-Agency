@@ -18,8 +18,6 @@
 }
 
 .swiper-button-prev, .swiper-button-next {
-    position:absolute;
-
     color: white !important;
     background-color: #FF7757;
     padding: 25px;
