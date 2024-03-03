@@ -53,7 +53,7 @@ export const destination = [
     {
       img: '/cities/bridge2.png',
       cityName: 'bridge2',
-        destination: 'destination text',
+        destination: 'Millennium Bridge',
     },
     {
       img: '/cities/lisbon.png',
@@ -81,3 +81,48 @@ export const destination = [
         destination: 'destination',
     },
 ];
+
+export const offers = [
+    {
+      img: '/cities/Col-block-2.png',
+      cityName: 'Col-block-2',
+        description: 'The quick brown fox jumps over the lazy dog in the serene meadow.',
+        price: 500,
+        stars: 5,
+    },
+    {
+        img: '/cities/athens.png',
+        cityName: 'athens',
+        description: 'The quick brown fox jumps over the lazy dog in the serene meadow.',
+        price: 500,
+        stars: 5,
+    },
+    {
+        img: '/cities/berlin.png',
+        cityName: 'berlin',
+        description: 'The quick brown fox jumps over the lazy dog in the serene meadow.',
+        price: 500,
+        stars: 4,
+    },
+    {
+        img: '/cities/bridge.png',
+        cityName: 'bri',
+        description: 'The quick brown fox jumps over the lazy dog in the serene meadow.',
+        price: 500,
+        stars: 5,
+    },
+    {
+        img: '/cities/lisbon.png',
+        cityName: 'lisbon',
+        description: 'The quick brown fox jumps over the lazy dog in the serene meadow.',
+        price: 500,
+        stars: 4,
+    },
+    {
+        img: '/cities/rome.png',
+        cityName: 'rome',
+        description: 'The quick brown fox jumps over the lazy dog in the serene meadow.',
+        price: 500,
+        stars: 5,
+    },
+]

@@ -1,4 +1,4 @@
-import Slider from '../../components/Swiper/Swiper';
+import Slider from '../../components/Swiper/DestionationSwiper';
 import styles from './dest.module.css';
 
 export default function Destinations() {
