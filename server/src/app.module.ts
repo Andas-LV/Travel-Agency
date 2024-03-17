@@ -3,8 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './models/user';
-import { UserModule } from './modules/user.module';
+import { UserModule } from './modules/user/user.module';
 import * as dotenv from 'dotenv'
+import { AuthModule } from './modules/auth/auth.module';
 dotenv.config()
 @Module({
   imports: [
@@ -19,7 +20,8 @@ dotenv.config()
       },
       synchronize:true
     }),
-    UserModule
+    UserModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
