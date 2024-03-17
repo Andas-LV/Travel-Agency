@@ -1,0 +1,38 @@
+.header{
+    width: 100%;
+    padding: 20px 0;
+}
+
+.header, .header nav ul, .header div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header nav ul{
+    gap: 20px;
+}
+
+.header nav ul li{
+    cursor: pointer;
+}
+
+.header nav ul li:hover{
+    border-bottom: 2px groove #FF7757;
+}
+
+.header button{
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.header button:hover{
+    background-color: #FF7757;
+}
+
+@media (max-width: 1152px) {
+    .header{
+        overflow-x: hidden;
+    }
+}

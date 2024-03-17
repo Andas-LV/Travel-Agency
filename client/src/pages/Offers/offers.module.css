@@ -1,0 +1,17 @@
+.wrapper{
+    width: 100%;
+    padding: 30px;
+    margin: 100px 0;
+}
+.wrapper h1{
+    width: 30vw;
+    font-size: 50px;
+    font-weight: 400;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #FF7757;
+}
+.wrapper nav p{
+    font-size: 20px;
+    margin: 20px 0 40px 0;
+    color: #767E86;
+}

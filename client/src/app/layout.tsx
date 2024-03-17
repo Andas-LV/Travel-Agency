@@ -6,8 +6,8 @@ import React from "react";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Tech Agency",
-  description: "Full-stack web app about Information Technology Agency",
+  title: "Travel Agency",
+  description: "Full-stack web app about Information Travel Agency",
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body className={montserrat.className}>{children}</body>
     </html>
   );

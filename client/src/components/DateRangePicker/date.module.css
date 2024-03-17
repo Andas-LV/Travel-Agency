@@ -1,0 +1,44 @@
+
+.wrapper span{
+    color: #858585;
+}
+.rangeBlock{
+    background-color: rgba(0,0,0,0.7);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:10px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pick{
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.pick:hover{
+    background-color: #2fb9a2;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .container {
+
+    }
+    .rangePicker{
+        width: 90vw;
+        overflow: scroll;
+    }
+}
