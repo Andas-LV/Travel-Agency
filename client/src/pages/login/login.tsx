@@ -38,7 +38,7 @@ function Login() {
         console.log(JSON.stringify({email, password}))
     }
     return (
-        <form className={styles.form}>
+        <div className={styles.form}>
             <div className={styles.flexColumn}>
                 <label>Email </label>
             </div>
@@ -96,7 +96,7 @@ function Login() {
                     Apple
                 </button>
             </div>
-        </form>
+        </div>
     );
 }
 
