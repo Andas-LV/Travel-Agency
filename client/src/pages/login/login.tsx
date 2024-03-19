@@ -32,9 +32,10 @@ function Login() {
         })
             .then(res => (res.json()))
             .then((res: LoginResponse) => {
+                console.log(res)
                 setCookie('token', res.token, 5);
             })
-            .then(res => console.log('отсоси у программиста',res))
+
         console.log(JSON.stringify({email, password}))
     }
     return (
