@@ -1,4 +1,8 @@
 /*DESTINATION*/
+.destSwiper{
+    z-index: 1;
+}
+
 .destination, .cityName{
     color: white;
 }

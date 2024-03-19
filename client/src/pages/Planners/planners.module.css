@@ -1,0 +1,49 @@
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 200px;
+}
+
+.leftSide{
+    width: 30%;
+}
+
+.rightSide{
+    display: flex;
+    gap: 30px;
+}
+
+.img{
+    border-radius: 10px;
+}
+
+.title{
+    width: 30vw;
+    font-size: 50px;
+    font-weight: 400;
+    padding-bottom: 15px;
+    font-family: Playfair Display, serif;
+}
+
+.leftSide line{
+    display: block;
+    width: 50%;
+    height: 3px;
+    background-color: #FF7757;
+}
+
+.leftSide p{
+    color: #767E86;
+    margin: 20px 0;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.card {
+    transition: transform 0.3s ease;
+}
+
+.open {
+    transform: translateY(-10%);
+}
