@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post,Headers, UnauthorizedException } from '@nestjs/common';
-import { CreateUserDto } from 'src/dto/create-user.dto';
+import { CreateUserDto } from '../../dto/create-user.dto';
 import { User } from '../../models/user';
 import { UserService } from 'src/services/user/user.service';
 import {verify} from 'jsonwebtoken'
