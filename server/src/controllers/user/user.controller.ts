@@ -1,8 +1,9 @@
 import { Body, Controller, Get, Param, Post,Headers, UnauthorizedException } from '@nestjs/common';
 import { CreateUserDto } from '../../dto/create-user.dto';
 import { User } from '../../models/user';
-import { UserService } from 'src/services/user/user.service';
+import { UserService } from '../../services/user/user.service';
 import {verify} from 'jsonwebtoken'
+
 @Controller('api/user')
 export class UserController {
   constructor(private userService: UserService) {}
