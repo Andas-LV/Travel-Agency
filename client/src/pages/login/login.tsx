@@ -34,7 +34,7 @@ function Login() {
             .then((res: LoginResponse) => {
                 setCookie('token', res.token, 5);
             })
-            .then(res => console.log('miras lox',res))
+            .then(res => console.log('отсоси у программиста',res))
         console.log(JSON.stringify({email, password}))
     }
     return (
