@@ -5,6 +5,7 @@ export default function Offers() {
     return (
         <article className={styles.wrapper}>
             <h1>Special Offer</h1>
+            <line></line>
             <nav>
                 <p>Check out our special offer and discounts</p>
             </nav>

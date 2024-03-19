@@ -23,6 +23,7 @@ export default function Slider() {
                 delay: 3000,
                 disableOnInteraction: false,
             }}
+            className={styles.destSwiper}
         >
             {destination.map((city, index) => (
                 <SwiperSlide key={index}>

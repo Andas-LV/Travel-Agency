@@ -84,8 +84,8 @@ export const destination = [
 
 export const offers = [
     {
-      img: '/cities/Col-block-2.png',
-      cityName: 'Col-block-2',
+        img: '/cities/Col-block-2.png',
+        cityName: 'Col-block-2',
         description: 'The quick brown fox jumps over the lazy dog in the serene meadow.',
         price: 500,
         stars: 5,
@@ -123,6 +123,30 @@ export const offers = [
         cityName: 'rome',
         description: 'The quick brown fox jumps over the lazy dog in the serene meadow.',
         price: 500,
+        stars: 5,
+    },
+]
+
+export const blog = [
+    {
+        img: '/cities/lisbon.png',
+        tourName: 'lisbon tour',
+        pricePerDay: '€95/Day',
+        length: '7 Days',
+        stars: 5,
+    },
+    {
+        img: '/cities/orange.png',
+        tourName: 'orange tour',
+        pricePerDay: '€95/Day',
+        length: '7 Days',
+        stars: 4,
+    },
+    {
+        img: '/cities/Image_container-3.png',
+        tourName: 'berlin tour',
+        pricePerDay: '€95/Day',
+        length: '7 Days',
         stars: 5,
     },
 ]

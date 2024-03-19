@@ -1,7 +1,7 @@
-
 .wrapper span{
     color: #858585;
 }
+
 .rangeBlock{
     background-color: rgba(0,0,0,0.7);
     width: 100%;
@@ -9,6 +9,7 @@
     position: fixed;
     left: 0;
     top: 0;
+    z-index: 999;
 }
 
 .container {

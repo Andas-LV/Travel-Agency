@@ -3,12 +3,18 @@
     padding: 30px;
     margin: 100px 0;
 }
+.wrapper line{
+    display: block;
+    width: 10%;
+    height: 3px;
+    background-color: #FF7757;
+}
 .wrapper h1{
     width: 30vw;
     font-size: 50px;
     font-weight: 400;
     padding-bottom: 15px;
-    border-bottom: 3px solid #FF7757;
+    font-family: Playfair Display, serif;
 }
 .wrapper nav p{
     font-size: 20px;
