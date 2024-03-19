@@ -1,34 +1,83 @@
 import styles from './login.module.css';
 import Link from "next/link";
+import {useState} from "react";
 
 function Login() {
+
+    const [email, setEmail] = useState<string>('')
+    const [password, setPassword] = useState('')
+
+    interface LoginResponse {
+        token:string
+    }
+
+    function setCookie(name: string, value: string, days: number) {
+        let expires = "";
+        if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+
+    function handleSubmit() {
+        fetch('/api/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({email, password}),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+        })
+            .then(res => (res.json()))
+            .then((res: LoginResponse) => {
+                setCookie('token', res.token, 5);
+            })
+            .then(res => console.log('miras lox',res))
+        console.log(JSON.stringify({email, password}))
+    }
     return (
         <form className={styles.form}>
             <div className={styles.flexColumn}>
                 <label>Email </label>
             </div>
             <div className={styles.inputForm}>
-                <svg height="20" viewBox="0 0 32 32" width="20" xmlns="http://www.w3.org/2000/svg"></svg>
-                <input type="text" className={styles.input} placeholder="Enter your Email" />
+                <input
+                    type="text"
+                    className={styles.input}
+                    placeholder="Enter your Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
             </div>
 
             <div className={styles.flexColumn}>
                 <label>Password </label>
             </div>
             <div className={styles.inputForm}>
-                <svg height="20" viewBox="-64 0 512 512" width="20" xmlns="http://www.w3.org/2000/svg"></svg>
-                <input type="password" className={styles.input} placeholder="Enter your Password" />
-                <svg viewBox="0 0 576 512" height="1em" xmlns="http://www.w3.org/2000/svg"></svg>
+                <input
+                    type="password"
+                    className={styles.input}
+                    placeholder="Enter your Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    />
             </div>
 
             <div className={styles.flexRow}>
                 <div>
-                    <input type="checkbox" />
+                    <input type="checkbox"/>
                     <label>Remember me </label>
                 </div>
                 <span className={styles.span}>Forgot password?</span>
             </div>
-            <button className={styles.buttonSubmit}>Sign In</button>
+            <button
+                className={styles.buttonSubmit}
+                onClick={handleSubmit}
+            >
+                Sign In
+            </button>
             <p className={styles.p}>
                 Don't have an account?
                 <span className={styles.span}>
@@ -37,15 +86,13 @@ function Login() {
                     </Link>
                 </span>
             </p>
-            <p className={styles.p + ' ' + styles.line}>Or With</p>
+            <p className={styles.p}>Or With</p>
 
             <div className={styles.flexRow}>
-                <button className={styles.btn + ' ' + styles.google}>
-                    <svg version="1.1" width="20" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"></svg>
+                <button className={styles.btn}>
                     Google
                 </button>
-                <button className={styles.btn + ' ' + styles.apple}>
-                    <svg version="1.1" height="20" width="20" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"></svg>
+                <button className={styles.btn}>
                     Apple
                 </button>
             </div>
