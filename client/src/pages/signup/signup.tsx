@@ -10,19 +10,49 @@ function SignUp() {
         token:string
     }
 
+    function setCookie(name: string, value: string, days: number) {
+        let expires = "";
+        if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+
+    // function handleSubmit() {
+    //     fetch('/api/user/create', {
+    //         method: 'POST',
+    //         body: JSON.stringify({email, password}),
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         credentials: 'include',
+    //     })
+    //         .then(res => res.json())
+    //         .then((res: LoginResponse) => {
+    //             setCookie('token', res.token, 5);
+    //         });
+    //     console.log(JSON.stringify({email, password}))
+    // }
+
     function handleSubmit() {
+        const formData = new URLSearchParams();
+        formData.append('email', email);
+        formData.append('password', password);
+
         fetch('/api/user/create', {
             method: 'POST',
-            body: JSON.stringify({email, password}),
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            body: formData,
             credentials: 'include',
         })
             .then(res => res.json())
-
-        console.log(JSON.stringify({email, password}))
+            .then((res: LoginResponse) => {
+                setCookie('token', res.token, 5);
+            });
+        console.log(formData.toString())
     }
+
 
     return (
         <div className={styles.form}>
