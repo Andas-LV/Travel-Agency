@@ -9,7 +9,7 @@ import {sign} from 'jsonwebtoken'
 export class AuthService {
     constructor(@InjectRepository(User)
     private userRepository: Repository<User>){}
-    async signIn(email: string, passwordApi: string): Promise<Object | string> {
+    async signIn(email: string, passwordApi: string): Promise<Object> {
         const user = await this.userRepository.findOne({where:{email:email}});
         if (!user) {
           return null;
@@ -17,7 +17,7 @@ export class AuthService {
     
         const isPasswordValid = await bcrypt.compare(passwordApi, user.password);
         if (!isPasswordValid) {
-          return 'Invalid password'; // Invalid password
+          return {message: 'Invalid password'}; // Invalid password
         }
         const token = sign({ userId: user.id }, process.env.SECRET_KEY, { expiresIn: '1h' });
         return {token: token};

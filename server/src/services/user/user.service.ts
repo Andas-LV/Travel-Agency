@@ -10,13 +10,13 @@
     constructor(@InjectRepository(User)
     private userRepository: Repository<User>) {}
 
-    async createUser(createUserDto: CreateUserDto): Promise<string> {
+    async createUser(createUserDto: CreateUserDto): Promise<Object> {
       const hashedPassword = await bcrypt.hash(createUserDto.password, 10); 
       const newUser = this.userRepository.create({email:createUserDto.email, password:hashedPassword});
       const user = this.userRepository.save(newUser);
 
-      if(!user) return 'Something went wrong...'
-      return 'User successfully created'
+      if(!user) return {message: 'Something went wrong while creating a user...'}
+      return {message:'User successfully created'}
     }
 
     async findAllUsers(): Promise<User[]> {   
