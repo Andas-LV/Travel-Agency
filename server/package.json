@@ -28,6 +28,7 @@
     "@vercel/postgres": "^0.7.2",
     "bcrypt": "^5.1.1",
     "class-transformer": "^0.5.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.4",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.11.3",
