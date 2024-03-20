@@ -17,7 +17,6 @@ export default function Slider() {
             slidesPerView={3}
             pagination={{ type: 'fraction', clickable: true }}
             modules={[Navigation, Pagination, Autoplay]}
-            onSwiper={swiper => console.log(swiper)}
             centeredSlides={true}
             autoplay={{
                 delay: 3000,

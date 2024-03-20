@@ -20,20 +20,37 @@ function SignUp() {
         document.cookie = name + "=" + (value || "")  + expires + "; path=/";
     }
 
+    // function handleSubmit() {
+    //     fetch('/api/user/create', {
+    //         method: 'POST',
+    //         body: JSON.stringify({email, password}),
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         credentials: 'include',
+    //     })
+    //         .then(res => res.json())
+    //         .then((res: LoginResponse) => {
+    //             setCookie('token', res.token, 5);
+    //         });
+    //     console.log(JSON.stringify({email, password}))
+    // }
+
     function handleSubmit() {
+        const formData = new URLSearchParams();
+        formData.append('email', email);
+        formData.append('password', password);
+
         fetch('/api/user/create', {
             method: 'POST',
-            body: JSON.stringify({email, password}),
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            body: formData,
             credentials: 'include',
         })
             .then(res => res.json())
             .then((res: LoginResponse) => {
                 setCookie('token', res.token, 5);
             });
-        console.log(JSON.stringify({email, password}))
+        console.log(formData.toString())
     }
 
 
