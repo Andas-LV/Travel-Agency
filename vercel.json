@@ -6,7 +6,7 @@
       "dest": "server/src/main.ts",
       "methods": ["POST","GET","PUT","DELETE","PATCH","OPTIONS"],
       "headers": {
-        "Access-Control-Allow-Origin": "*"
+        "Access-Control-Allow-Origin": "192.168.45.123, 127.0.0.1"
       }
     },
     {
