@@ -6,7 +6,7 @@ import * as cors from 'cors'
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(cors({
-    origin:'192.168.45.123',
+    origin:'*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinue: false,
     optionsSuccessStatus: 204
