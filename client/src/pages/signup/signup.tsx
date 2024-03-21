@@ -1,5 +1,4 @@
 import styles from './signup.module.css';
-import Link from "next/link";
 import {useState} from "react";
 import singUpReq from "@/services/singUpReq";
 
