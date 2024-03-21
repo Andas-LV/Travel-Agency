@@ -1,42 +1,11 @@
 import styles from './login.module.css';
 import Link from "next/link";
 import {useState} from "react";
-import axios from "axios";
+import loginReq from '@/services/loginReq'
 
 export default function Login() {
-
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState('')
-
-    interface LoginResponse {
-        token:string
-    }
-
-    function setCookie(name: string, value: string, days: number) {
-        let expires = "";
-        if (days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-
-    function loginHandler() {
-        axios.post('/api/auth/login', {email, password}, {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            withCredentials: true,
-        })
-            .then(res => {
-                console.log(res.data);
-                setCookie('token', res.data.token, 10);
-            })
-            .catch(error => console.error(error));
-
-        console.log(JSON.stringify({email, password}));
-    }
 
     return (
         <div className={styles.form}>
@@ -75,7 +44,7 @@ export default function Login() {
             </div>
             <button
                 className={styles.buttonSubmit}
-                onClick={loginHandler}
+                onClick={() => loginReq({email, password})}
             >
                 Log In
             </button>

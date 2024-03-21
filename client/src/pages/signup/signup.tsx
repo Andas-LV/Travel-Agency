@@ -1,21 +1,11 @@
 import styles from './signup.module.css';
 import Link from "next/link";
 import {useState} from "react";
-import axios from "axios";
+import singUpReq from "@/services/singUpReq";
 
 function SignUp() {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState('')
-
-    function singUpHandler() {
-        axios.post('https://tech-agency-ten.vercel.app/api/user/all', {email, password}, {
-            withCredentials: true,
-        })
-            .then(res => console.log(res.data))
-            .catch(error => console.error(error));
-
-        console.log(JSON.stringify({email, password}));
-    }
 
     return (
         <div className={styles.form}>
@@ -53,7 +43,7 @@ function SignUp() {
             </div>
             <button
                 className={styles.buttonSubmit}
-                onClick={singUpHandler}
+                onClick={() => singUpReq({email, password})}
             >
                 SignUp
             </button>
