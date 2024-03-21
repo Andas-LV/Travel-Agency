@@ -6,7 +6,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: ["192.168.45.123", "192.168.45.178", "https://tech-agency-ten.vercel.app","http://localhost:3000"]
+    // origin: ["192.168.45.123", "192.168.45.178", "https://tech-agency-ten.vercel.app","http://localhost:3000"]
+    origin:"*"
   });
 
   await app.listen(8080, ()=>{
