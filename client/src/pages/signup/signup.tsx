@@ -1,58 +1,21 @@
 import styles from './signup.module.css';
 import Link from "next/link";
 import {useState} from "react";
+import axios from "axios";
 
 function SignUp() {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState('')
 
-    interface LoginResponse {
-        token:string
-    }
-
-    function setCookie(name: string, value: string, days: number) {
-        let expires = "";
-        if (days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-
-    // function handleSubmit() {
-    //     fetch('/api/user/create', {
-    //         method: 'POST',
-    //         body: JSON.stringify({email, password}),
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         credentials: 'include',
-    //     })
-    //         .then(res => res.json())
-    //         .then((res: LoginResponse) => {
-    //             setCookie('token', res.token, 5);
-    //         });
-    //     console.log(JSON.stringify({email, password}))
-    // }
-
-    function handleSubmit() {
-        const formData = new URLSearchParams();
-        formData.append('email', email);
-        formData.append('password', password);
-
-        fetch('/api/user/create', {
-            method: 'POST',
-            body: formData,
-            credentials: 'include',
+    function singUpHandler() {
+        axios.post('/api/user/create', {email, password}, {
+            withCredentials: true,
         })
-            .then(res => res.json())
-            .then((res: LoginResponse) => {
-                setCookie('token', res.token, 5);
-            });
-        console.log(formData.toString())
-    }
+            .then(res => console.log(res.data))
+            .catch(error => console.error(error));
 
+        console.log(JSON.stringify({email, password}));
+    }
 
     return (
         <div className={styles.form}>
@@ -90,7 +53,7 @@ function SignUp() {
             </div>
             <button
                 className={styles.buttonSubmit}
-                onClick={handleSubmit}
+                onClick={singUpHandler}
             >
                 SignUp
             </button>

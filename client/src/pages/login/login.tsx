@@ -1,8 +1,9 @@
 import styles from './login.module.css';
 import Link from "next/link";
 import {useState} from "react";
+import axios from "axios";
 
-function Login() {
+export default function Login() {
 
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState('')
@@ -21,23 +22,22 @@ function Login() {
         document.cookie = name + "=" + (value || "")  + expires + "; path=/";
     }
 
-    function handleSubmit() {
-        fetch('/api/auth/login', {
-            method: 'POST',
-            body: JSON.stringify({email, password}),
+    function loginHandler() {
+        axios.post('/api/auth/login', {email, password}, {
             headers: {
                 'Content-Type': 'application/json'
             },
-            credentials: 'include',
+            withCredentials: true,
         })
-            .then(res => (res.json()))
-            .then((res: LoginResponse) => {
-                console.log(res)
-                setCookie('token', res.token, 5);
+            .then(res => {
+                console.log(res.data);
+                setCookie('token', res.data.token, 10);
             })
+            .catch(error => console.error(error));
 
-        console.log(JSON.stringify({email, password}))
+        console.log(JSON.stringify({email, password}));
     }
+
     return (
         <div className={styles.form}>
             <div className={styles.flexColumn}>
@@ -75,9 +75,9 @@ function Login() {
             </div>
             <button
                 className={styles.buttonSubmit}
-                onClick={handleSubmit}
+                onClick={loginHandler}
             >
-                Sign In
+                Log In
             </button>
             <p className={styles.p}>
                 Don't have an account?
@@ -100,5 +100,3 @@ function Login() {
         </div>
     );
 }
-
-export default Login;
