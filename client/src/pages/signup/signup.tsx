@@ -8,7 +8,7 @@ function SignUp() {
     const [password, setPassword] = useState('')
 
     function singUpHandler() {
-        axios.post('/api/user/create', {email, password}, {
+        axios.post('https://tech-agency-ten.vercel.app/api/user/all', {email, password}, {
             withCredentials: true,
         })
             .then(res => console.log(res.data))
