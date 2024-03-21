@@ -3,10 +3,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "server/src/main.ts",
-      "headers": {
-        "Access-Control-Allow-Origin": ["192.168.45.123","192.168.45.178","https://tech-agency-ten.vercel.app"]
-      }
+      "dest": "server/src/main.ts"
     },
     {
       "src": "/(.*)",
