@@ -8,13 +8,7 @@ async function bootstrap() {
   const allowedOrigins = ["http://192.168.45.123:3000", "http://192.168.45.178:3000", "https://tech-agency-ten.vercel.app", "http://localhost:3000"];
 
   app.enableCors({
-    origin: function (origin, callback) {
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true)
-      } else {
-        callback(new Error('Not allowed by CORS'))
-      }
-    },
+    origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     allowedHeaders: "*",
     credentials: true,
