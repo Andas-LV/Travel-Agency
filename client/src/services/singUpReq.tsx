@@ -6,9 +6,7 @@ interface SignUpData {
 }
 
 export default function singUpReq({email, password}: SignUpData) {
-    axios.get('https://tech-agency-ten.vercel.app/api/hello', {
-        withCredentials: true,
-    })
+    axios.post(`${process.env.BACKEND_API_HOST}/user/create`, {email, password})
         .then(res => console.log(res.data))
         .catch(error => console.error(error));
 

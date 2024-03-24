@@ -7,11 +7,10 @@ interface LoginData {
 }
 
 export default function loginReq({email, password}: LoginData) {
-    axios.post('/api/auth/login', {email, password}, {
+    axios.post(`${process.env.BACKEND_API_HOST}/auth/login`, {email, password}, {
         headers: {
             'Content-Type': 'application/json'
-        },
-        withCredentials: true,
+        }
     })
         .then(res => {
             console.log(res.data);
