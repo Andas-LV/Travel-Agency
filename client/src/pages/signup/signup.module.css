@@ -23,7 +23,7 @@
 }
 
 .inputForm {
-    border: 1.5px solid #ecedec;
+    border: 2px solid #ecedec;
     border-radius: 10px;
     height: 50px;
     display: flex;
@@ -33,11 +33,11 @@
 }
 
 .input {
+    border: none;
     margin-left: 10px;
     border-radius: 10px;
-    border: none;
     width: 85%;
-    height: 100%;
+    height: 90%;
 }
 
 .input:focus {
@@ -45,7 +45,7 @@
 }
 
 .inputForm:focus-within {
-    border: 1.5px solid #2d79f3;
+    border: 2px solid #2d79f3;
 }
 
 .flexRow {
@@ -112,4 +112,15 @@
 
 .btn:hover {
     border: 1px solid #2d79f3;
+}
+
+.showPasswordBtn{
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
+}
+
+.errMessage{
+    color: red;
 }
