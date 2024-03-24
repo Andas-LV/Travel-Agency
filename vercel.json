@@ -3,15 +3,11 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "server/src/main.ts",
-      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"],
-      "headers": { "Access-Control-Allow-Origin": "*" }
+      "dest": "server/src/main.ts"
     },
     {
       "src": "/(.*)",
-      "dest": "client/$1",
-      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"],
-      "headers": { "Access-Control-Allow-Origin": "*" }
+      "dest": "client/$1"
     }
   ],
   "builds": [
