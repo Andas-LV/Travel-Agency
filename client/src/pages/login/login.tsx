@@ -42,12 +42,15 @@ export default function Login() {
                 </div>
                 <span className={styles.span}>Forgot password?</span>
             </div>
-            <button
-                className={styles.buttonSubmit}
-                onClick={() => loginReq({email, password})}
-            >
-                Log In
-            </button>
+            <Link href={"/"}>
+                <button
+                    className={styles.buttonSubmit}
+                    onClick={() => loginReq({email, password})}
+                >
+                    Log In
+                </button>
+            </Link>
+
             <p className={styles.p}>
                 Don't have an account?
                 <span className={styles.span}>

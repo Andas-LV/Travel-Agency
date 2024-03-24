@@ -7,3 +7,4 @@ export default function Cookie(name: string, value: string, days: number) {
     }
     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
+

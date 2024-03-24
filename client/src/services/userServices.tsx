@@ -1,15 +1,10 @@
 import axios from "axios";
 import Cookie from './Cookie'
 
-
-interface LoginData {
-    email: string;
-    password: any;
-}
-
-export default function loginReq({email, password}: LoginData,) {
-    axios.post(`${process.env.BACKEND_API_HOST}/auth/login`, {email, password}, {
+export default function whoAmI(token:string) {
+    axios.get(`${process.env.BACKEND_API_HOST}/user/one`, {
         headers: {
+            Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
         }
     })
@@ -18,6 +13,4 @@ export default function loginReq({email, password}: LoginData,) {
             Cookie('token', res.data.token, 10);
         })
         .catch(error => console.error(error));
-
-    console.log(JSON.stringify({email, password}));
 }
