@@ -9,7 +9,9 @@
     },
     {
       "src": "/(.*)",
-      "dest": "client/$1"
+      "dest": "client/$1",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      "headers": { "Access-Control-Allow-Origin": "*" }
     }
   ],
   "builds": [
