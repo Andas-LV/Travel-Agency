@@ -1,14 +1,24 @@
+import React, { useState } from 'react';
 import styles from './signup.module.css';
-import Link from "next/link";
-import {useState} from "react";
+import { IoEye, IoEyeOff } from "react-icons/io5";
 import singUpReq from "@/services/singUpReq";
+import {  useAuthForm, AuthSchemaType } from "@/services/AuthSchema";
 
-function SignUp() {
-    const [email, setEmail] = useState<string>('')
-    const [password, setPassword] = useState('')
+export default function SignUp() {
+    const { register, handleSubmit, errors } = useAuthForm();
+    const [showPassword, setShowPassword] = useState(false);
+
+    const onSubmit = (data: AuthSchemaType) => {
+        singUpReq(data);
+    };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     return (
-        <div className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+            {/* Email input */}
             <div className={styles.flexColumn}>
                 <label>Email </label>
             </div>
@@ -17,47 +27,40 @@ function SignUp() {
                     type="text"
                     className={styles.input}
                     placeholder="Enter your Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    {...register("email")}
                 />
             </div>
 
+            {errors.email && <span className={styles.errMessage}>{errors.email.message}</span>}
+
+            {/* Password input */}
             <div className={styles.flexColumn}>
                 <label>Password </label>
             </div>
             <div className={styles.inputForm}>
                 <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     className={styles.input}
                     placeholder="Enter your Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    {...register("password")}
                 />
+
+                <button className={styles.showPasswordBtn} onClick={togglePasswordVisibility}>
+                    {showPassword ? <IoEyeOff/> : <IoEye/>}
+                </button>
             </div>
 
-            <div className={styles.flexRow}>
-                <div>
-                    <input type="checkbox"/>
-                    <label>Remember me </label>
-                </div>
-            </div>
-            <button
-                className={styles.buttonSubmit}
-                onClick={() => singUpReq({email, password})}
-            >
+            {errors.password && <span className={styles.errMessage}>{errors.password.message}</span>}
+
+            <button className={styles.buttonSubmit} type="submit">
                 SignUp
             </button>
 
+            {/* Social login buttons */}
             <div className={styles.flexRow}>
-                <button className={styles.btn}>
-                    Google
-                </button>
-                <button className={styles.btn}>
-                    Apple
-                </button>
+                <button className={styles.btn}>Google</button>
+                <button className={styles.btn}>Apple</button>
             </div>
-        </div>
+        </form>
     );
 }
-
-export default SignUp;
