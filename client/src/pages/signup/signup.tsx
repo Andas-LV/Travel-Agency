@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styles from './signup.module.css';
 import { IoEye, IoEyeOff } from "react-icons/io5";
-import singUpReq from "@/services/singUpReq";
-import {  useAuthForm, AuthSchemaType } from "@/services/AuthSchema";
+import singUpReq from "@/api/singUpReq";
+import {  useAuthForm, AuthSchemaType } from "@/api/AuthSchema";
 
 export default function SignUp() {
     const { register, handleSubmit, errors } = useAuthForm();

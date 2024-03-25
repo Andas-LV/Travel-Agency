@@ -1,15 +1,17 @@
 import styles from './header.module.css';
-import whoAmI from "../../services/userServices";
-import GetCookies from "@/services/GetCookies";
+import whoAmI from "@/api/whoAmI";
 import Image from "next/image";
 import Link from "next/link";
 import {useEffect} from "react";
+import GetCookies from '@/api/GetCookies';
 
 export default function Header() {
     useEffect(
         () => {
-            whoAmI(GetCookies('token'));
-        })
+            whoAmI(GetCookies('token'))
+            console.log('res')
+        },[])
+
     return (
         <header className={styles.header}>
             <Image src={"/svg/logo.svg"} alt={"img"} width={200} height={100}/>

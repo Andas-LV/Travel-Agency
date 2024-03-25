@@ -1,11 +1,24 @@
 import styles from './login.module.css';
 import Link from "next/link";
 import {useState} from "react";
-import loginReq from '@/services/loginReq'
+import loginReq from '@/api/loginReq'
+import { useRouter } from 'next/router'
+import Cookie from "@/api/setCookies";
 
 export default function Login() {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState('')
+    const router = useRouter()
+
+    async function loginHandler() {
+        const res = await loginReq({email, password});
+        console.log(res.data.token)
+
+        if(res.data.token){
+            Cookie('token', res.data.token, 10)
+            await router.push('/');
+        }
+    }
 
     return (
         <div className={styles.form}>
@@ -32,7 +45,7 @@ export default function Login() {
                     placeholder="Enter your Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    />
+                />
             </div>
 
             <div className={styles.flexRow}>
@@ -42,14 +55,13 @@ export default function Login() {
                 </div>
                 <span className={styles.span}>Forgot password?</span>
             </div>
-            <Link href={"/"}>
-                <button
-                    className={styles.buttonSubmit}
-                    onClick={() => loginReq({email, password})}
-                >
-                    Log In
-                </button>
-            </Link>
+
+            <button
+                className={styles.buttonSubmit}
+                onClick={loginHandler}
+            >
+                Log In
+            </button>
 
             <p className={styles.p}>
                 Don't have an account?
