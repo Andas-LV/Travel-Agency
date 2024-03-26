@@ -2,10 +2,11 @@ import styles from './header.module.css';
 import whoAmI from "@/api/whoAmI";
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import GetCookies from '@/api/GetCookies';
 
 export default function Header() {
+    const [name, setName] = useState<string>('');
     useEffect(
         () => {
             whoAmI(GetCookies('token'))
@@ -28,6 +29,10 @@ export default function Header() {
             </nav>
 
             <div>
+                <h2>
+                    {name}
+                </h2>
+
                 <Link href={"/login/login"}>
                     <button>Log in</button>
                 </Link>

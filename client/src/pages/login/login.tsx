@@ -3,7 +3,7 @@ import Link from "next/link";
 import {useState} from "react";
 import loginReq from '@/api/loginReq'
 import { useRouter } from 'next/router'
-import Cookie from "@/api/setCookies";
+import setCookie from "@/api/setCookies";
 
 export default function Login() {
     const [email, setEmail] = useState<string>('')
@@ -15,7 +15,7 @@ export default function Login() {
         console.log(res.data.token)
 
         if(res.data.token){
-            Cookie('token', res.data.token, 10)
+            setCookie('token', res.data.token, 10)
             await router.push('/');
         }
     }
