@@ -1,14 +1,12 @@
 import axios from "axios";
 
-export default function whoAmI(token:string) {
-    axios.get(`${process.env.BACKEND_API_HOST}/user/one`, {
+export default async function whoAmI(token: string) {
+    const res = await axios.get(`${process.env.BACKEND_API_HOST}/user/one`, {
         headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
         }
-    })
-        .then(res => {
-            console.log(res.data);
-        })
-        .catch(error => console.error(error));
+    });
+    if(res) return (res.data);
+    else{console.error('Ошибка при выполнении запроса:');}
 }

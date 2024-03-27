@@ -4,6 +4,7 @@ import {useState} from "react";
 import loginReq from '@/api/loginReq'
 import { useRouter } from 'next/router'
 import setCookie from "@/api/setCookies";
+import {redirect} from "next/navigation";
 
 export default function Login() {
     const [email, setEmail] = useState<string>('')

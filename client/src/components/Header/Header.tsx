@@ -7,11 +7,17 @@ import GetCookies from '@/api/GetCookies';
 
 export default function Header() {
     const [name, setName] = useState<string>('');
-    useEffect(
-        () => {
-            whoAmI(GetCookies('token'))
-            console.log('res')
-        },[])
+
+    useEffect(() => {
+        whoAmI(GetCookies('token'))
+            .then((userData) => {
+                setName(userData.email)
+                console.log(userData)
+            })
+            .catch((error) => {
+                console.error('Ошибка при выполнении запроса:', error);
+            });
+    }, []);
 
     return (
         <header className={styles.header}>
