@@ -12,7 +12,7 @@ export default function Header() {
         whoAmI(GetCookies('token'))
             .then((userData) => {
                 setName(userData.email)
-                console.log(userData)
+                console.log("UserData", userData)
             })
             .catch((error) => {
                 console.error('Ошибка при выполнении запроса:', error);
