@@ -3,7 +3,7 @@ import whoAmI from "@/api/whoAmI";
 import Image from "next/image";
 import Link from "next/link";
 import {useEffect, useState} from "react";
-import GetCookies from '@/api/GetCookies';
+import GetCookies from '@/cookies/GetCookies';
 
 export default function Header() {
     const [name, setName] = useState<string>('');
@@ -39,11 +39,11 @@ export default function Header() {
                     {name}
                 </h2>
 
-                <Link href={"/login/login"}>
+                <Link href={"/auth/login"}>
                     <button>Log in</button>
                 </Link>
 
-                <Link href={"/signup/signup"}>
+                <Link href={"/auth/signup"}>
                     <button>Sign up</button>
                 </Link>
             </div>

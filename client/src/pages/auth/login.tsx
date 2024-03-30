@@ -1,22 +1,27 @@
-import styles from './login.module.css';
+import styles from './auth.module.css';
 import Link from "next/link";
-import {useState} from "react";
-import loginReq from '@/api/loginReq'
-import { useRouter } from 'next/router'
-import setCookie from "@/api/setCookies";
-import {redirect} from "next/navigation";
+import React, {useState} from "react";
+import loginReq from '@/api/loginReq';
+import { useRouter } from 'next/router';
+import setCookie from "@/cookies/setCookies";
+import {IoEye, IoEyeOff} from "react-icons/io5";
 
 export default function Login() {
-    const [email, setEmail] = useState<string>('')
-    const [password, setPassword] = useState('')
-    const router = useRouter()
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState('');
+    const router = useRouter();
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     async function loginHandler() {
         const res = await loginReq({email, password});
         console.log(res.data.token)
 
         if(res.data.token){
-            setCookie('token', res.data.token, 10)
+            setCookie('token', res.data.token, 1)
             await router.push('/');
         }
     }
@@ -39,14 +44,18 @@ export default function Login() {
             <div className={styles.flexColumn}>
                 <label>Password </label>
             </div>
+
             <div className={styles.inputForm}>
                 <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     className={styles.input}
                     placeholder="Enter your Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                <button type="button" onClick={togglePasswordVisibility} className={styles.showPasswordBtn}>
+                    {showPassword ? <IoEyeOff/> : <IoEye/>}
+                </button>
             </div>
 
             <div className={styles.flexRow}>
@@ -61,7 +70,7 @@ export default function Login() {
                 className={styles.buttonSubmit}
                 onClick={loginHandler}
             >
-                Log In
+                Log in
             </button>
 
             <p className={styles.p}>

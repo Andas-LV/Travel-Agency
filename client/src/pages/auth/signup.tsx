@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
-import styles from './signup.module.css';
+import styles from './auth.module.css';
 import { IoEye, IoEyeOff } from "react-icons/io5";
+import { FaGoogle,FaGithub } from "react-icons/fa6";
 import singUpReq from "@/api/singUpReq";
-import {  useAuthForm, AuthSchemaType } from "@/api/AuthSchema";
+import {  useAuthForm, AuthSchemaType } from "@/schemas/AuthSchema";
+import { useRouter } from 'next/router'
 
 export default function SignUp() {
     const { register, handleSubmit, errors } = useAuthForm();
     const [showPassword, setShowPassword] = useState(false);
+    const router = useRouter()
 
-    const onSubmit = (data: AuthSchemaType) => {
+    async function onSubmit  (data: AuthSchemaType) {
         singUpReq(data);
-    };
+
+        if(data){
+            await router.push('/auth/login');
+            console.log(data)
+        }
+    }
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -45,7 +53,7 @@ export default function SignUp() {
                     {...register("password")}
                 />
 
-                <button className={styles.showPasswordBtn} onClick={togglePasswordVisibility}>
+                <button type={"button"} className={styles.showPasswordBtn} onClick={togglePasswordVisibility}>
                     {showPassword ? <IoEyeOff/> : <IoEye/>}
                 </button>
             </div>
@@ -53,13 +61,19 @@ export default function SignUp() {
             {errors.password && <span className={styles.errMessage}>{errors.password.message}</span>}
 
             <button className={styles.buttonSubmit} type="submit">
-                SignUp
+                Sign Up
             </button>
 
             {/* Social login buttons */}
             <div className={styles.flexRow}>
-                <button className={styles.btn}>Google</button>
-                <button className={styles.btn}>Apple</button>
+                <button className={styles.btn}>
+                    <FaGoogle />
+                    Google
+                </button>
+                <button className={styles.btn}>
+                    <FaGithub />
+                    GitHub
+                </button>
             </div>
         </form>
     );
