@@ -5,16 +5,20 @@ import styles from './mainpage.module.css'
 import Offers from "@/pages/Offers/Offers";
 import Blog from "@/pages/Blog/Blog";
 import Planners from "@/pages/Planners/Planners";
+import {Suspense} from "react";
+import Loading from "@/app/loading";
 
 const MainPage = () => {
 
     return (
         <div className={styles.wrapper}>
-            <Home/>
-            <Destination/>
-            <Offers/>
-            <Blog/>
-            <Planners/>
+            <Suspense fallback={<Loading/>}>
+                <Home/>
+                <Destination/>
+                <Offers/>
+                <Blog/>
+                <Planners/>
+            </Suspense>
         </div>
     );
 };

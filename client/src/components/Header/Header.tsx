@@ -2,16 +2,19 @@ import styles from './header.module.css';
 import whoAmI from "@/api/whoAmI";
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import {Suspense, useEffect, useState} from "react";
 import GetCookies from '@/cookies/GetCookies';
+import Loading from "@/app/loading";
 
 export default function Header() {
     const [name, setName] = useState<string>('');
+    const [role, setRole] = useState<string>('');
 
     useEffect(() => {
         whoAmI(GetCookies('token'))
             .then((userData) => {
                 setName(userData.email)
+                setRole(userData.role)
                 console.log("UserData", userData)
             })
             .catch((error) => {
@@ -35,9 +38,14 @@ export default function Header() {
             </nav>
 
             <div>
-                <h2>
-                    {name}
-                </h2>
+                <h5>
+                    <Suspense fallback={<Loading/>}>
+                        {name}
+                        {role === "USER" && (
+                            <div>Role: {role}</div>
+                        )}
+                    </Suspense>
+                </h5>
 
                 <Link href={"/auth/login"}>
                     <button>Log in</button>
