@@ -16,6 +16,7 @@ export default function Header() {
             .then((userData) => {
                 setName(userData.email)
                 setRole(userData.role)
+
                 console.log("UserData", userData)
             })
             .catch((error) => {
