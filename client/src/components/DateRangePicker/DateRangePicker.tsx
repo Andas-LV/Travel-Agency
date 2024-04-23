@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { DateRangePicker, RangeKeyDict, Range } from 'react-date-range';
 import '../libs.css'
 import styles from './date.module.css';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 
-interface DateCheckProps {
-    selectionRange: Range;
-    setSelectionRange: (range: Range) => void;
-}
-
-export const DateCheck: React.FC<DateCheckProps> = ({ selectionRange, setSelectionRange }) => {
-    const currentDate = new Date();
+export const DateCheck = () => {
+    const currentDate = new Date()
     const [isVisible, setIsVisible] = useState(false);
+    const [selectionRange, setSelectionRange] = useState<Range>({
+        startDate: new Date(),
+        endDate: new Date(),
+        key: 'selection',
+    });
 
     return (
         <div className={styles.wrapper}>
