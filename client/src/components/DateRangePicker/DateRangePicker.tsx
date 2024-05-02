@@ -1,3 +1,4 @@
+"use client"
 import { useState } from 'react';
 import { DateRangePicker, RangeKeyDict, Range } from 'react-date-range';
 import '../libs.css'

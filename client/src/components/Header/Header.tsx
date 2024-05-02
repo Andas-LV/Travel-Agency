@@ -1,9 +1,12 @@
+"use client"
 import styles from './header.module.css';
-import whoAmI from "@/api/whoAmI";
+import whoAmI from "@/app/api/whoAmI";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState} from "react";
 import GetCookies from '@/cookies/GetCookies';
+
+import LoginBtn from "@/components/login-btn";
 
 export default function Header() {
     const [name, setName] = useState<string>('');
@@ -26,6 +29,8 @@ export default function Header() {
 
     return (
         <header className={styles.header}>
+            <LoginBtn/>
+
             <Image src={"/svg/logo.svg"} alt={"img"} width={200} height={100}/>
 
             <nav>
