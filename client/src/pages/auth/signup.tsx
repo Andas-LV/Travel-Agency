@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './auth.module.css';
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { FaGoogle,FaGithub } from "react-icons/fa6";
-import singUpReq from "@/api/singUpReq";
+import singUpReq from "@/app/api/singUpReq";
 import {  useAuthForm, AuthSchemaType } from "@/schemas/AuthSchema";
 import { useRouter } from 'next/router';
 import { RiLockPasswordFill } from "react-icons/ri";

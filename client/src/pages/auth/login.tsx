@@ -1,13 +1,14 @@
-import styles from './auth.module.css';
-import Link from "next/link";
 import React, {useState} from "react";
-import loginReq from '@/api/loginReq';
+import loginReq from '@/app/api/loginReq';
 import { useRouter } from 'next/router';
 import setCookie from "@/cookies/setCookies";
 import {IoEye, IoEyeOff} from "react-icons/io5";
 import { FaGoogle,FaGithub } from "react-icons/fa6";
 
-export default function Login() {
+import styles from './auth.module.css';
+import Link from "next/link";
+
+export default function Login()  {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState('');
     const router = useRouter();

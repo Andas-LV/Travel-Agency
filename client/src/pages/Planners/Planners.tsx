@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import {blog} from "@/assets/select";
 import styles from './planners.module.css'
