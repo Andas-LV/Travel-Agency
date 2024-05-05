@@ -6,5 +6,11 @@ const nextConfig = {
         GITHUB_SECRET: process.env.GITHUB_SECRET,
         GITHUB_ID: process.env.GITHUB_ID,
     },
+    images: {
+        domains: [
+            'avatars.githubusercontent.com',
+            'lh3.googleusercontent.com'
+        ],
+    },
 };
 export default nextConfig;

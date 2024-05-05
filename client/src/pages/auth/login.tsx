@@ -1,9 +1,11 @@
+"use client"
 import React, {useState} from "react";
 import loginReq from '@/app/api/loginReq';
 import { useRouter } from 'next/router';
 import setCookie from "@/cookies/setCookies";
 import {IoEye, IoEyeOff} from "react-icons/io5";
 import { FaGoogle,FaGithub } from "react-icons/fa6";
+import {signIn, useSession} from "next-auth/react";
 
 import styles from './auth.module.css';
 import Link from "next/link";
@@ -24,6 +26,16 @@ export default function Login()  {
 
         if(res.data.token){
             setCookie('token', res.data.token, 1)
+            await router.push('/');
+        }
+    }
+
+    async function loginWith(provider: string) {
+        await signIn(provider);
+
+        const { data: session } = useSession();
+        console.log(session);
+        if (session) {
             await router.push('/');
         }
     }
@@ -87,11 +99,11 @@ export default function Login()  {
                 <p className={styles.p}>Or With</p>
 
                 <div className={styles.flexRow}>
-                    <button className={styles.btn}>
+                    <button className={styles.btn} onClick={() => loginWith("google")}>
                         <FaGoogle className={styles.icon}/>
                         Google
                     </button>
-                    <button className={styles.btn}>
+                    <button className={styles.btn} onClick={() => loginWith("github")}>
                         <FaGithub className={styles.icon}/>
                         GitHub
                     </button>

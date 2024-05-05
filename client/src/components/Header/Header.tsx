@@ -29,8 +29,6 @@ export default function Header() {
 
     return (
         <header className={styles.header}>
-            <LoginBtn/>
-
             <Image src={"/svg/logo.svg"} alt={"img"} width={200} height={100}/>
 
             <nav>
@@ -52,13 +50,15 @@ export default function Header() {
                     )}
                 </h5>
 
-                <Link href={"/auth/login"}>
-                    <button>Log in</button>
-                </Link>
+                {/*<Link href={"/auth/login"}>*/}
+                {/*    <button>Log in</button>*/}
+                {/*</Link>*/}
 
-                <Link href={"/auth/signup"}>
-                    <button>Sign up</button>
-                </Link>
+                {/*<Link href={"/auth/signup"}>*/}
+                {/*    <button>Sign up</button>*/}
+                {/*</Link>*/}
+
+                <LoginBtn/>
             </div>
         </header>
     );
