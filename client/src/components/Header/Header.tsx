@@ -2,7 +2,7 @@
 import styles from './header.module.css';
 import whoAmI from "@/app/api/whoAmI";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import { useEffect, useState} from "react";
 import GetCookies from '@/cookies/GetCookies';
 
