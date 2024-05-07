@@ -1,10 +1,9 @@
-"use client"
 import { useSession, signIn, signOut } from "next-auth/react";
 import styles from "./components.module.css";
 import Image from "next/image";
 
 export default function LoginBtn() {
-    const { data: session } = useSession();
+    const { data: session } = useSession() ?? {};
 
     if (session) {
         console.log(JSON.stringify(session));
