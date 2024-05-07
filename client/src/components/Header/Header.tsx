@@ -25,6 +25,10 @@ export default function Header() {
             .catch((error) => {
                 console.error('Ошибка при выполнении запроса:', error);
             });
+
+
+        console.log(process.env.GOOGLE_CLIENT_ID)
+        console.log(process.env.GOOGLE_CLIENT_SECRET)
     }, []);
 
     return (
