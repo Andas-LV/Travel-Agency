@@ -28,7 +28,7 @@ export default function LoginBtn() {
     return (
         <div>
             Not signed in <br />
-            <button onClick={() => signIn("google")}>Sign in with Google</button>
+            <button onClick={() => signIn()}>Sign in</button>
         </div>
     );
 }
