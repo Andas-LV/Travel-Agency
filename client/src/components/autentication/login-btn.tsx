@@ -1,13 +1,11 @@
 import { useSession, signIn, signOut } from "next-auth/react";
-import styles from "./components.module.css";
+import styles from "./autentication.module.css";
 import Image from "next/image";
 
 export default function LoginBtn() {
     const { data: session } = useSession() ?? {};
 
     if (session) {
-        console.log(JSON.stringify(session));
-
         const img = session.user?.image?.toString() ?? '';
 
         return (

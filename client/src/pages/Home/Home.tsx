@@ -1,4 +1,4 @@
-import Header from "@/components/Header/Header";
+import Header from "../../components/Header/Header";
 import {DateCheck} from "@/components/DateRangePicker/DateRangePicker";
 import {cities, quantity} from "@/assets/select";
 import dynamic from "next/dynamic";
@@ -7,9 +7,14 @@ import styles from './home.module.css';
 import Image from "next/image";
 
 const Home = () => {
+    const backImg = "/main-imgs/backgroundHeader.png";
 
     return (
-        <div className={styles.wrapper}>
+        <div style={{
+                background: `url(${backImg})`,
+            }}
+            className={styles.wrapper}
+        >
             <Header/>
 
             <div>

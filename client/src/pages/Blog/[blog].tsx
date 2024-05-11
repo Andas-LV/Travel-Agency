@@ -4,6 +4,7 @@ import Image from "next/image";
 export default function Blog() {
     return (
         <article className={styles.wrapper}>
+
             <h1 className={styles.h1}>Our Blog</h1>
             <line></line>
             <nav>

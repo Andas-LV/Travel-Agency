@@ -1,7 +1,7 @@
 "use client"
 import React, {useState} from "react";
 import loginReq from '@/app/api/loginReq';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import setCookie from "@/cookies/setCookies";
 import {IoEye, IoEyeOff} from "react-icons/io5";
 import { FaGoogle,FaGithub } from "react-icons/fa6";
@@ -13,7 +13,7 @@ import Link from "next/link";
 export default function Login()  {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState('');
-    const router = useRouter();
+    const {replace} = useRouter();
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
@@ -26,7 +26,7 @@ export default function Login()  {
 
         if(res.data.token){
             setCookie('token', res.data.token, 1)
-            await router.push('/');
+            replace("/");
         }
     }
 
@@ -36,7 +36,7 @@ export default function Login()  {
         const { data: session } = useSession();
         console.log(session);
         if (session) {
-            await router.push('/');
+            replace("/");
         }
     }
 

@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-image: url("../../../public/main-imgs/backgroundHeader.png");
     background-size: cover;
     background-position: center;
     min-height: 100vh;

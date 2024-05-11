@@ -1,5 +1,4 @@
 import Slider from '../../components/Swiper/DestionationSwiper';
-import DestSlider from '../../components/Swiper/GalleryCarousel';
 import styles from './dest.module.css';
 
 export default function Destinations() {
@@ -13,7 +12,6 @@ export default function Destinations() {
                 </p>
             </nav>
             <Slider/>
-            <DestSlider/>
         </article>
     );
 }

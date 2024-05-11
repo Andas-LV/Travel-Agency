@@ -2,11 +2,10 @@
 import styles from './header.module.css';
 import whoAmI from "@/app/api/whoAmI";
 import Image from "next/image";
-// import Link from "next/link";
+import Link from "next/link";
 import { useEffect, useState} from "react";
 import GetCookies from '@/cookies/GetCookies';
-
-import LoginBtn from "@/components/login-btn";
+import LoginBtn from "@/components/autentication/login-btn";
 
 export default function Header() {
     const [name, setName] = useState<string>('');
@@ -25,12 +24,6 @@ export default function Header() {
             .catch((error) => {
                 console.error('Ошибка при выполнении запроса:', error);
             });
-
-
-        console.log(process.env.GOOGLE_CLIENT_ID)
-        console.log(process.env.GOOGLE_CLIENT_SECRET)
-
-        console.log("URL",process.env.NEXTAUTH_URL)
     }, []);
 
     return (
@@ -42,7 +35,9 @@ export default function Header() {
                     <li>Home</li>
                     <li>Explore</li>
                     <li>Travel</li>
-                    <li>Blog</li>
+                    <Link href={"/Blog/1"}>
+                        Blog
+                    </Link>
                     <li>Pricing</li>
                     <li>Basket</li>
                 </ul>
@@ -56,13 +51,13 @@ export default function Header() {
                     )}
                 </h5>
 
-                {/*<Link href={"/auth/login"}>*/}
-                {/*    <button>Log in</button>*/}
-                {/*</Link>*/}
+                <Link href={"/auth/login"}>
+                    <button>Log in</button>
+                </Link>
 
-                {/*<Link href={"/auth/signup"}>*/}
-                {/*    <button>Sign up</button>*/}
-                {/*</Link>*/}
+                <Link href={"/auth/signup"}>
+                    <button>Sign up</button>
+                </Link>
 
                 <LoginBtn/>
             </div>
