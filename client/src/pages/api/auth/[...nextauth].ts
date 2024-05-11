@@ -1,8 +1,8 @@
-import type { NextAuthOptions } from 'next-auth'
-import GoogleProvider from 'next-auth/providers/google'
-import GitHubProvider from 'next-auth/providers/github'
+import NextAuth from "next-auth"
+import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
 
-export const options: NextAuthOptions = {
+export default NextAuth({
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -13,4 +13,4 @@ export const options: NextAuthOptions = {
             clientSecret: process.env.GITHUB_SECRET!,
         }),
     ],
-}
+})
