@@ -1,23 +1,25 @@
+"use client";
 import React, { useState } from 'react';
-import styles from './auth.module.css';
+import styles from '../auth.module.css';
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { FaGoogle,FaGithub } from "react-icons/fa6";
 import singUpReq from "@/app/api/singUpReq";
 import {  useAuthForm, AuthSchemaType } from "@/schemas/AuthSchema";
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { RiLockPasswordFill } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
+import {signIn, useSession} from "next-auth/react";
 
 const SignUp = () => {
     const { register, handleSubmit, errors } = useAuthForm();
     const [showPassword, setShowPassword] = useState(false);
-    const router = useRouter()
+    const {replace, push} = useRouter();
+    const { status } = useSession()
 
     async function onSubmit  (data: AuthSchemaType) {
         singUpReq(data);
-
         if(data){
-            await router.push('/auth/login');
+            push('/auth/login');
             console.log(data)
         }
     }
@@ -25,6 +27,19 @@ const SignUp = () => {
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
+
+    if(status === "authenticated"){
+        replace("/");
+    }
+
+    async function authWith(provider: string) {
+        try {
+            await signIn(provider);
+            console.log("Authentication successful!");
+        } catch (error) {
+            console.error("Authentication failed:", error);
+        }
+    }
 
     return (
         <div className={styles.wrapper}>
@@ -74,18 +89,19 @@ const SignUp = () => {
                     Sign Up
                 </button>
 
-                {/* Social login buttons */}
-                <div className={styles.flexRow}>
-                    <button className={styles.btn}>
-                        <FaGoogle className={styles.icon}/>
-                        Google
-                    </button>
-                    <button className={styles.btn}>
-                        <FaGithub className={styles.icon}/>
-                        GitHub
-                    </button>
-                </div>
             </form>
+
+            {/* Social login buttons */}
+            <div className={styles.flexRow}>
+                <button className={styles.btn} onClick={() => authWith("google")}>
+                    <FaGoogle className={styles.icon}/>
+                    Google
+                </button>
+                <button className={styles.btn} onClick={() => authWith("github")}>
+                    <FaGithub className={styles.icon}/>
+                    GitHub
+                </button>
+            </div>
         </div>
     );
 }

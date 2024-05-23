@@ -7,7 +7,7 @@ import {IoEye, IoEyeOff} from "react-icons/io5";
 import { FaGoogle,FaGithub } from "react-icons/fa6";
 import {signIn, useSession} from "next-auth/react";
 
-import styles from './auth.module.css';
+import styles from '../auth.module.css';
 import Link from "next/link";
 
 export default function Login()  {
@@ -31,12 +31,13 @@ export default function Login()  {
     }
 
     async function loginWith(provider: string) {
-        await signIn(provider);
+        const result = await signIn(provider);
 
-        const { data: session } = useSession();
-        console.log(session);
-        if (session) {
-            replace("/");
+        if (result) {
+            console.log(`Вход в систему с помощью ${provider} выполнен успешно!`);
+            replace("/"); // Перенаправление на главную страницу
+        } else {
+            console.error(`Ошибка при входе в систему с помощью ${provider}.`);
         }
     }
 

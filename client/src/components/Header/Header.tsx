@@ -26,6 +26,8 @@ export default function Header() {
             });
     }, []);
 
+    console.log(process.env.NEXTAUTH_URL)
+
     return (
         <header className={styles.header}>
             <Image src={"/svg/logo.svg"} alt={"img"} width={200} height={100}/>
@@ -35,8 +37,8 @@ export default function Header() {
                     <li>Home</li>
                     <li>Explore</li>
                     <li>Travel</li>
-                    <Link href={"/Blog/1"}>
-                        Blog
+                    <Link href={"/dashboard"} className={styles.a}>
+                        dashboard
                     </Link>
                     <li>Pricing</li>
                     <li>Basket</li>
@@ -55,7 +57,7 @@ export default function Header() {
                     <button>Log in</button>
                 </Link>
 
-                <Link href={"/auth/signup"}>
+                <Link href={"/signup"}>
                     <button>Sign up</button>
                 </Link>
 
