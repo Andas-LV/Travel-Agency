@@ -28,10 +28,6 @@ const SignUp = () => {
         setShowPassword(!showPassword);
     };
 
-    if(status === "authenticated"){
-        replace("/");
-    }
-
     async function authWith(provider: string) {
         try {
             await signIn(provider);
@@ -39,6 +35,10 @@ const SignUp = () => {
         } catch (error) {
             console.error("Authentication failed:", error);
         }
+    }
+
+    if(status === "authenticated"){
+        replace("/");
     }
 
     return (
