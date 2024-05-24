@@ -13,13 +13,13 @@ import {signIn, useSession} from "next-auth/react";
 const SignUp = () => {
     const { register, handleSubmit, errors } = useAuthForm();
     const [showPassword, setShowPassword] = useState(false);
-    const {replace, push} = useRouter();
+    const {replace} = useRouter();
     const { status } = useSession()
 
     async function onSubmit  (data: AuthSchemaType) {
         singUpReq(data);
         if(data){
-            push('/auth/login');
+            replace('/auth/login');
             console.log(data)
         }
     }
