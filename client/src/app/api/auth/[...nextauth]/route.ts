@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 
-export default NextAuth({
+const handler = NextAuth({
     session: { strategy: "jwt" },
     providers: [
         GoogleProvider({
@@ -16,3 +16,5 @@ export default NextAuth({
     ],
     secret: process.env.NEXTAUTH_SECRET,
 })
+
+export { handler as GET, handler as POST }
