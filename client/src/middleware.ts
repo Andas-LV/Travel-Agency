@@ -2,8 +2,11 @@ import { withAuth } from "next-auth/middleware"
 
 export default withAuth({
     pages: {
-        signIn: "/auth/signup",
+        signIn: "/signup",
         error: "/error",
     },
+    callbacks: {
+        authorized: ({ token }) => token?.role === "admin",
+    },
 })
-export const config = { matcher: ["/dashboard"] }
+export const config = { matcher: ["/dashboard", "/admin"] }
